@@ -5,12 +5,14 @@ const port = 5000
 
 const api = require('./route/APIrouter')
 
+app.use('/api', api);
+app.use(express.json());
+
 mongoose.connect('mongodb://127.0.0.1:27017',
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
     .then(() => console.log("MongoDB Connect Complete"))
     .catch(err => console.log(`Mongo Error : ${err}`))
 
-app.use('/api', api);
 
 app.listen(port, () => {
     console.log(`Express server(port : ${port}) start...`);

@@ -1,9 +1,12 @@
 const express = require('express')
 const router = express.Router();
+const UserInfoModel = require('../models/UserInfoModel')
 
-router.get('/login', (req, res) => {
+router.use(express.json());
+
+router.post('/login', (req, res) => {
     console.log('Login Request arrive');
-    res.send('Acquire login request');
+    console.log(req.body);
 })
 
 module.exports = router;
